@@ -1,0 +1,33 @@
+{
+  "name": "basic-ts-project-with-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "mocha --require ts-node/register --recursive ./src/**/*.test.ts",
+    "test-watch": "npm test -- --watch --watch-files src",
+    "lint": "eslint . --ext .ts",
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "mocha": "^8.0.0",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}
