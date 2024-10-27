@@ -1,19 +1,30 @@
-import type { Config } from '@jest/types'
+import type { Config } from 'jest'
 
-const config: Config.InitialOptions = {
+const config: Config = {
   verbose: true,
   clearMocks: true,
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
-  },
   modulePathIgnorePatterns: ['<rootDir>/build'],
   moduleFileExtensions: ['ts', 'js'],
   testEnvironment: 'node',
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.ts$': ['ts-jest', {
+      useESM: true,
+      tsconfig: 'tsconfig.json'
+    }]
   },
+  preset: 'ts-jest/presets/default-esm',
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1'
+  },
+  extensionsToTreatAsEsm: ['.ts'],
+  testMatch: ['**/src/**/*.test.ts'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/build/',
+    '/__tests__/'
+  ],
+  passWithNoTests: true,
+  detectOpenHandles: true
 }
 
 export default config
